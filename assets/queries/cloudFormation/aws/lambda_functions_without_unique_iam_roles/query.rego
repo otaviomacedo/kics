@@ -2,6 +2,15 @@ package Cx
 
 import data.generic.cloudformation as cf_lib
 
+# Given two lambda functions j and k, we want the template to have the following property:
+#
+#     j != k => j.role != k.role
+#
+# which is equivalent to its inverse:
+#
+#     j.role == k.role => j == k
+#
+
 CxPolicy[result] {
 	resources := input.document[i].Resources
 	resource := resources[k]
